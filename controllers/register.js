@@ -1,11 +1,10 @@
-const saltRound = 10;
 const handleRegister = (req, res, db, bcrypt) => {
 
   // const {name, last_name, fav_movie, email, password} = req.body;
   const {name, email, password} = req.body;
   if(!email || !name || !password)
     return res.status(400).json('incorrect form submission');
-  const hash = bcrypt.hashSync(password, saltRound);
+  const hash = bcrypt.hashSync(password);
   db.transaction(trx=> {
     trx.insert({
       hash: hash,
@@ -22,10 +21,8 @@ const handleRegister = (req, res, db, bcrypt) => {
           joined: new Date()
         })
         .then(user=> {
-          console.log(user[0]);
           res.json(user[0])
         })
-        // .catch(err => res.status(400).json('unable to get user'))
     })
     .then(trx.commit)
     .catch(trx.rollback)

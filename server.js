@@ -26,6 +26,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
-app.post('/signIn', (req, res) => signIn.handleSignIn(db, bcrypt));
+app.post('/signIn', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)});
 
 app.listen(4000);
