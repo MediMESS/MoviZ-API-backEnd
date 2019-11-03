@@ -22,3 +22,15 @@ CREATE TABLE Login (
   hash VARCHAR(100) NOT NULL,
   email TEXT UNIQUE NOT NULL
 );
+
+-- Remove tables
+DELETE FROM Users WHERE id =
+DELETE FROM Login WHERE id =
+-- some examples to register in the App
+abc
+abc@abc.com
+1234
+
+abc2
+abc2@abc.com
+4321
