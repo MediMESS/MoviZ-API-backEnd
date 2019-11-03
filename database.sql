@@ -28,6 +28,8 @@ DELETE FROM Users WHERE id =
 DELETE FROM Login WHERE id =
 
 -- some examples to register in the App
+INSERT INTO login (hash, email) VALUES
+  ('AKFDLJAFDJLAFJLAFKL', 'abc@abc.com'), ('AKFDLJAFDJLAFJLAFKL', 'abc@abc.com'), ('AKFDLJAFDJLAFJLAFKL', 'abc@abc.com')
 abc
 abc@abc.com
 1234
