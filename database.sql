@@ -26,6 +26,7 @@ CREATE TABLE Login (
 -- Remove tables
 DELETE FROM Users WHERE id =
 DELETE FROM Login WHERE id =
+
 -- some examples to register in the App
 abc
 abc@abc.com

@@ -18,7 +18,7 @@ let PORT = process.env.PORT || 4000;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-// https://moviz-app.herokuapp.com/
+
 app.get('/', (req, res) => {
   res.status(200).json(`ITs working`)
   console.log('nodemon and server running!');
