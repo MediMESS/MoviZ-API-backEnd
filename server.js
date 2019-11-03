@@ -15,7 +15,7 @@ const db = knex({
     database : 'moviz'
   }
 });
-const PORT = 4000 || process.env.PORT;
+let PORT = 4000 || process.env.PORT;
 
 const app = express();
 app.use(cors());
@@ -26,7 +26,6 @@ app.get('/', (req, res) => {
   console.log('nodemon and server running!');
 })
 
-app.get('/', (req, res) => {res.json("IT'S WORKING!");})
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
 app.post('/signIn', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)});
 
