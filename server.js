@@ -22,8 +22,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.status(200).json('ITs working')
+  res.status(200).json(`'ITs working', ${HEROKU_URL}`)
   console.log('nodemon and server running!');
+  console.log(HEROKU_URL);
 })
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
