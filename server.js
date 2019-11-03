@@ -22,7 +22,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.status(200).json(`'ITs working', ${HEROKU_URL}`)
+  res.status(200).json(`ITs working`)
   console.log('nodemon and server running!');
   console.log(HEROKU_URL);
 })
