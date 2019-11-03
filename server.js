@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
   console.log('nodemon and server running!');
 })
 
-app.get('/', (req, res) => {console.log("IT'S WORKING!");})
+app.get('/', (req, res) => {res.json("IT'S WORKING!");})
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
 app.post('/signIn', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)});
 
