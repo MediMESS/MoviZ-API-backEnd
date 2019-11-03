@@ -15,7 +15,7 @@ const db = knex({
     database : 'moviz'
   }
 });
-let PORT = 4000 || process.env.PORT;
+let PORT = process.env.PORT || 4000;
 
 const app = express();
 app.use(cors());
