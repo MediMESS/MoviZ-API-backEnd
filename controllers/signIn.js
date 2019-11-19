@@ -3,7 +3,6 @@ const handleSignIn = (req, res, db, bcrypt) => {
   const {email, password} = req.body;
   if(!email || !password)
     return res.status(400).json('UNABLE TO LOG IN');
-
   db.select('email', 'hash').from('login')
     .where('email', email)
     .then(data => {
@@ -12,6 +11,7 @@ const handleSignIn = (req, res, db, bcrypt) => {
           if(isRightPassword){
             db.select('*').from('users').where('email', email)
               .then(user => res.status(200).json(user))
+            console.log("SIGNED YEAHHH");
           }
         else
           res.status(400).json('ERROR, WRONG CREDENTIALS')

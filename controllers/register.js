@@ -22,6 +22,7 @@ const handleRegister = (req, res, db, bcrypt) => {
           joined: new Date()
         })
         .then(user=> {
+          console.log("SIGNED UPPP");
           res.json(user[0])
         })
     })

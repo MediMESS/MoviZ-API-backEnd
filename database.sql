@@ -37,3 +37,5 @@ abc@abc.com
 abc2
 abc2@abc.com
 4321
+
+<a href='http://localhost:3000/' style={{ fontSize: '100px'}}>you've signed LOG OUT!</a>

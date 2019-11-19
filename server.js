@@ -3,9 +3,12 @@ const bodyParser = require('body-parser');
 const knex = require('knex');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const fetch = require("node-fetch");
+const unirest = require("unirest");
 
 const register = require('./controllers/register');
 const signIn = require('./controllers/signIn');
+const dashboard = require('./controllers/Moviz');
 // const db = knex({
 //   client: 'pg',
 //   connection: {
@@ -35,5 +38,6 @@ app.get('/', (req, res) => {
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
 app.post('/signIn', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)});
+app.post('/searchMoviz', (req, res) => {dashboard.searchMoviz(req, res, fetch, unirest)});
 
 app.listen(PORT);
