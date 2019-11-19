@@ -2,8 +2,9 @@ const saltRounds = 10;
 const handleRegister = (req, res, db, bcrypt) => {
 
   // const {name, last_name, fav_movie, email, password} = req.body;
-  const {name, email, password} = req.body;
-  if(!email || !name || !password)
+  const {first_name, last_name, favorite_movie, email, password} = req.body;
+  const user = req.body;
+  if(!email || !password || !first_name || !last_name || !favorite_movie )
     return res.status(400).json('incorrect form submission');
   const hash = bcrypt.hashSync(password, saltRounds);
   db.transaction(trx=> {
@@ -18,7 +19,9 @@ const handleRegister = (req, res, db, bcrypt) => {
         .returning('*')
         .insert({
           email: loginEmail[0],
-          name: name,
+          first_name: first_name,
+          last_name: last_name,
+          favorite_movie: favorite_movie,
           joined: new Date()
         })
         .then(user=> {

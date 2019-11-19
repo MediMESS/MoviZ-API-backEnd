@@ -7,13 +7,20 @@ CREATE DATABASE moviz
 -- list all tables
 \dt
 
+-- Drop tables
+DROP TABLE Users;
+DROP TABLE Login;
 
 -- create table users
 CREATE TABLE Users (
   id serial PRIMARY KEY,
-  name VARCHAR(50),
-  last_name VARCHAR(50),
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
   email TEXT UNIQUE NOT NULL,
+  url_profile_picture TEXT DEFAULT '',
+  favorite_movie VARCHAR(50) NOT NULL,
+  city VARCHAR(20) DEFAULT '',
+  country VARCHAR(20) DEFAULT '',
   joined TIMESTAMP NOT NULL
 );
 
@@ -23,8 +30,19 @@ CREATE TABLE Login (
   email TEXT UNIQUE NOT NULL
 );
 
+CREATE TYPE movizState AS ENUM ('liked', 'recommended');
+CREATE TABLE Moviz (
+  id SERIAL PRIMARY KEY,
+  id_user SERIAL REFERENCES users(id),
+  title VARCHAR(50) NOT NULL,
+  year INTEGER,
+  rating REAL,
+  url_picture TEXT DEFAULT '',
+  state movizState
+);
+
 -- Remove tables
-DELETE FROM Users WHERE id =
+DELETE FROM Users Where first_name = 'a';
 DELETE FROM Login WHERE id =
 
 -- some examples to register in the App
