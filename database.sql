@@ -31,7 +31,7 @@ CREATE TABLE Login (
 );
 
 CREATE TYPE movizState AS ENUM ('liked', 'recommended');
-CREATE TABLE Moviz (
+CREATE TABLE movies (
   id SERIAL PRIMARY KEY,
   id_user SERIAL REFERENCES users(id),
   title VARCHAR(50) NOT NULL,
