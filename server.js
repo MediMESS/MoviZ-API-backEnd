@@ -39,5 +39,7 @@ app.get('/', (req, res) => {
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
 app.post('/signIn', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)});
 app.post('/searchMoviz', (req, res) => {moviz.searchMoviz(req, res, fetch, unirest)});
+app.post('/createMoviz', (req, res) => {moviz.createMoviz(req, res, fetch, unirest)});
+app.post('/getRating', (req, res) => {moviz.getRating(req, res, unirest)});
 
 app.listen(PORT);
