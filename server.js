@@ -9,6 +9,8 @@ const unirest = require("unirest");
 const register = require('./controllers/register');
 const signIn = require('./controllers/signIn');
 const moviz = require('./controllers/Moviz');
+const movizCard = require('./controllers/MovizCard');
+const like = require('./controllers/Like');
 // const db = knex({
 //   client: 'pg',
 //   connection: {
@@ -39,6 +41,10 @@ app.get('/', (req, res) => {
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
 app.post('/signIn', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)});
 app.post('/searchMoviz', (req, res) => {moviz.searchMoviz(req, res, fetch, unirest)});
-app.post('/getRating', (req, res) => {moviz.getRating(req, res, unirest)});
+app.post('/insertMovie', (req, res) => {movizCard.insertMovie(req, res, db)});
+app.delete('/deleteMovie/:movieId', (req, res) => {movizCard.deleteMovie(req, res, db)});
+app.get('/getRating/:movieId', (req, res) => {moviz.getRating(req, res, unirest)});
+app.get('/getLike/:movieId', (req, res) => {movizCard.getLike(req, res, db)});
+app.get('/getMoviesLiked', (req, res) => {like.getMoviesLiked(req, res, db)});
 
 app.listen(PORT);

@@ -8,6 +8,7 @@ CREATE DATABASE moviz
 \dt
 
 -- Drop tables
+DROP TABLE Movies;
 DROP TABLE Users;
 DROP TABLE Login;
 
@@ -24,6 +25,8 @@ CREATE TABLE Users (
   joined TIMESTAMP NOT NULL
 );
 
+postgresqlpassword
+\c moviz
 CREATE TABLE Login (
   id SERIAL PRIMARY KEY,
   hash VARCHAR(100) NOT NULL,
@@ -32,7 +35,7 @@ CREATE TABLE Login (
 
 CREATE TYPE movizState AS ENUM ('liked', 'recommended');
 CREATE TABLE movies (
-  id SERIAL PRIMARY KEY,
+  id VARCHAR(10) PRIMARY KEY,
   id_user SERIAL REFERENCES users(id),
   title VARCHAR(50) NOT NULL,
   year INTEGER,
@@ -42,7 +45,8 @@ CREATE TABLE movies (
 );
 
 -- Remove tables
-DELETE FROM Users Where first_name = 'a';
+DELETE FROM Users Where id = 4;
+DELETE FROM Login Where id = 4;
 DELETE FROM Login WHERE id =
 
 -- some examples to register in the App
@@ -53,7 +57,16 @@ abc@abc.com
 1234
 
 abc2
-abc2@abc.com
 4321
-
+abc2@abc.com
+id: 'ttttttt15',
+  id_user: 1,
+  title: 'Joker',
+  year: 2019,
+  rating: 8.8,
+  url_picture:
+   'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg',
+  state: 'liked'
+INSERT INTO movies VALUES('ttttt5', 1, 'Joker', 2019, 8.8, 'http://ww.pic.com', 'liked');
+INSERT INTO movies VALUES('ttttt4', 2, 'Joker', 2019, 8.8, 'http://ww.pic.com', 'liked');
 <a href='http://localhost:3000/' style={{ fontSize: '100px'}}>you've signed LOG OUT!</a>

@@ -27,7 +27,8 @@ const headersIMDb = {
 //
 // tt0499549
 const getRating = (req, res, unirest) => {
-	const {movieId} = req.body;
+	const {movieId} = req.params;
+	console.log("WELCOME TO GET RATING" , req.params);
 	unirest.get("https://imdb8.p.rapidapi.com/title/get-ratings")
 		.headers(headersIMDb)
 		.query({"tconst": movieId})
@@ -45,7 +46,6 @@ const getRating = (req, res, unirest) => {
 }
 
 const createMoviz = (movies) => {
-	console.log("welcome to createMoviz");
 	return movies.map(movieResult => {
 		const movie = {
 			id: movieResult.id.split('/')[2],
@@ -56,12 +56,11 @@ const createMoviz = (movies) => {
 		}
 		movieResult.year ? movie["year"] = movieResult.year : movie["year"]="None";
 		if(movieResult.image)
-			movie["imageUrl"] = movieResult.image.url
+			movie["url_picture"] = movieResult.image.url
 		else
-			movie["imageUrl"]="https://previews.123rf.com/images/scanrail/scanrail1305/scanrail130500015/19528007-cinema-movie-film-and-video-media-industry-production-concept-clapper-board-metal-film-reel-and-film.jpg";
+			movie["url_picture"]="https://previews.123rf.com/images/scanrail/scanrail1305/scanrail130500015/19528007-cinema-movie-film-and-video-media-industry-production-concept-clapper-board-metal-film-reel-and-film.jpg";
 		return movie;
 	});
-
 }
 
 const searchMoviz = (req, res, fetch, unirest) => {
